@@ -3,6 +3,7 @@ FROM python:3.10-slim
 
 # Set the working directory in the container
 WORKDIR /app
+
 RUN apt-get update && apt-get install -y tesseract-ocr libtesseract-dev
 # Copy the requirements file into the container at /app
 COPY requirements.txt .
@@ -14,9 +15,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the current directory contents into the container at /app
 COPY . .
-
-# Ensure the templates directory is copied
-COPY templates /app/templates
 
 # Make port 5000 available to the world outside this container
 EXPOSE 8000
