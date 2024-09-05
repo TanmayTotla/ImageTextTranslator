@@ -4,8 +4,9 @@ FROM python:3.10-slim
 # Set the working directory in the container
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y tesseract-ocr libtesseract-dev \
-    && tesseract --version
+RUN apt-get update && \
+    apt-get install -y tesseract-ocr libtesseract-dev && \
+    && tesseract --version || { echo "Tesseract installation failed"; exit 1; }
 
 ENV PATH="/usr/bin:${PATH}"
 
