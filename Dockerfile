@@ -17,7 +17,9 @@ COPY . .
 COPY templates /app/templates
 
 # Make port 5000 available to the world outside this container
-EXPOSE 5000
+EXPOSE 8000
 
 # Run app.py when the container launches
 CMD ["python", "app.py"]
+
+RUN apt-get update && apt-get install -y tesseract-ocr libtesseract-dev
